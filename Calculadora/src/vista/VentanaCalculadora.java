@@ -13,7 +13,7 @@ public class VentanaCalculadora extends JFrame {
 	// Atributos de la clase
 	private JLabel etiqueta1, etiqueta2, etiqueta3;
 	private JTextField cajaTexto1, cajaTexto2;
-	private JButton boton1, boton2, boton3, boton4, boton5, boton6;
+	private JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7;
 
 	// Constructor de VentanaCalculadora
 	public VentanaCalculadora() {
@@ -21,7 +21,7 @@ public class VentanaCalculadora extends JFrame {
 		// Título de la ventana
 		setTitle("Calculadora");
 		// Tamaño
-		setSize(400, 500);
+		setSize(340, 500);
 		// Posición centrada
 		setLocationRelativeTo(null);
 		// Comportamiento al cierre
@@ -71,6 +71,10 @@ public class VentanaCalculadora extends JFrame {
 		return boton6;
 	}
 
+	public JButton getBoton7() {
+		return boton7;
+	}
+
 	// Método que inicializa los componentes
 	private void initComponentes() {
 
@@ -86,7 +90,7 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		cajaTexto1 = new JTextField();
 		// Posición y tamaño
-		cajaTexto1.setBounds(150, 50, 100, 40);
+		cajaTexto1.setBounds(180, 50, 100, 40);
 		// Ponemos el foco en cajaTexto1
 		cajaTexto1.requestFocus();
 		// Añadimos a ventana
@@ -104,7 +108,7 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		cajaTexto2 = new JTextField();
 		// Posición y tamaño
-		cajaTexto2.setBounds(150, 100, 100, 40);
+		cajaTexto2.setBounds(180, 100, 100, 40);
 		// Añadimos a ventana
 		add(cajaTexto2);
 
@@ -161,9 +165,17 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		etiqueta3 = new JLabel("Resultado:");
 		// Posición y tamaño
-		etiqueta3.setBounds(60, 370, 200, 40);
+		etiqueta3.setBounds(60, 370, 220, 40);
 		// Añadimos a ventana
 		add(etiqueta3);
+		
+		// Inicialización de boton7 y características
+		// Inicialización
+		boton7 = new JButton("Reset");
+		// Posición y tamaño
+		boton7.setBounds(120, 420, 100, 50);
+		// Añadimos a ventana
+		add(boton7);
 	}
 
 	// Método que asocia el manejador de eventos
@@ -174,5 +186,6 @@ public class VentanaCalculadora extends JFrame {
 		boton4.addActionListener(me);
 		boton5.addActionListener(me);
 		boton6.addActionListener(me);
+		boton7.addActionListener(me);
 	}
 }
