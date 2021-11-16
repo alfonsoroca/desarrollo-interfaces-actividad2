@@ -21,7 +21,7 @@ public class VentanaCalculadora extends JFrame {
 		// Título de la ventana
 		setTitle("Calculadora");
 		// Tamaño
-		setSize(340, 500);
+		setSize(340, 550);
 		// Posición centrada
 		setLocationRelativeTo(null);
 		// Comportamiento al cierre

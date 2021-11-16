@@ -66,13 +66,16 @@ public class ManejadorEventos implements ActionListener {
 			// de una contraseña para su cálculo que es solicitada en una nueva ventana.
 			// Si la contraseña es errónea se indica por ventana y se reinicia la calculadora.
 			if (e.getSource() == vc.getBoton6()) {				
+				String password = "1234";
 				double raiz3 = Math.cbrt(Double.parseDouble(vc.getCajaTexto1().getText()));
-				String password = JOptionPane.showInputDialog("Contraseña:");
-				// Con el condicional controlamos la contraseña (1234)
-				if(password.equals("1234")) {					
+				String validacion = JOptionPane.showInputDialog("Contraseña:");
+				
+				// Con el condicional controlamos la contraseña almacenada en password
+				if(validacion.equals(password)) {					
 					vc.getEtiqueta3().setText("Resultado: " + String.valueOf(raiz3));						
 				} else {
-					JOptionPane.showMessageDialog(null, "Contraseña erronea", "Contraseña erronea", JOptionPane.WARNING_MESSAGE);					
+					JOptionPane.showMessageDialog(null, "Contraseña erronea", "Contraseña erronea", JOptionPane.WARNING_MESSAGE);
+					reset();
 				}
 			}
 			
