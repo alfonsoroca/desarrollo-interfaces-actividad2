@@ -1,9 +1,13 @@
 package vista;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.text.AttributeSet.ColorAttribute;
+
+import java.awt.Color;
 
 import controlador.ManejadorEventos;
 
@@ -22,6 +26,8 @@ public class VentanaCalculadora extends JFrame {
 		setTitle("Calculadora");
 		// Tamaño
 		setSize(340, 550);
+		// Bloqueamos tamaño
+		setResizable(false);
 		// Posición centrada
 		setLocationRelativeTo(null);
 		// Comportamiento al cierre
@@ -30,7 +36,9 @@ public class VentanaCalculadora extends JFrame {
 		setLayout(null);
 		// Inicialización de componentes
 		initComponentes();
-		// Visibiliadad
+		// Color del fondo de la ventana
+		this.getContentPane().setBackground(Color.decode("#fafafa"));
+		// Visibilidad
 		setVisible(true);
 	}
 
@@ -117,6 +125,11 @@ public class VentanaCalculadora extends JFrame {
 		boton1 = new JButton("Sumar");
 		// Posición y tamaño
 		boton1.setBounds(60, 160, 100, 50);
+		// Estilo del boton
+		boton1.setBackground(Color.decode("#2196f3"));
+		boton1.setForeground(Color.decode("#ffffff"));
+		boton1.setBorder(BorderFactory.createBevelBorder(0));
+
 		// Añadimos a ventana
 		add(boton1);
 
@@ -125,6 +138,10 @@ public class VentanaCalculadora extends JFrame {
 		boton2 = new JButton("Restar");
 		// Posición y tamaño
 		boton2.setBounds(180, 160, 100, 50);
+		// Estilo del boton
+		boton2.setBackground(Color.decode("#2196f3"));
+		boton2.setForeground(Color.decode("#ffffff"));
+		boton2.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
 		add(boton2);
 
@@ -133,6 +150,10 @@ public class VentanaCalculadora extends JFrame {
 		boton3 = new JButton("Multiplicar");
 		// Posición y tamaño
 		boton3.setBounds(60, 230, 100, 50);
+		// Estilo del boton
+		boton3.setBackground(Color.decode("#2196f3"));
+		boton3.setForeground(Color.decode("#ffffff"));
+		boton3.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
 		add(boton3);
 
@@ -141,6 +162,10 @@ public class VentanaCalculadora extends JFrame {
 		boton4 = new JButton("Dividir");
 		// Posición y tamaño
 		boton4.setBounds(180, 230, 100, 50);
+		// Estilo del boton
+		boton4.setBackground(Color.decode("#2196f3"));
+		boton4.setForeground(Color.decode("#ffffff"));
+		boton4.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
 		add(boton4);
 
@@ -149,6 +174,10 @@ public class VentanaCalculadora extends JFrame {
 		boton5 = new JButton("Raíz 2");
 		// Posición y tamaño
 		boton5.setBounds(60, 300, 100, 50);
+		// Estilo del boton
+		boton5.setBackground(Color.decode("#2196f3"));
+		boton5.setForeground(Color.decode("#ffffff"));
+		boton5.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
 		add(boton5);
 
@@ -157,6 +186,10 @@ public class VentanaCalculadora extends JFrame {
 		boton6 = new JButton("Raíz 3");
 		// Posición y tamaño
 		boton6.setBounds(180, 300, 100, 50);
+		// Estilo del boton
+		boton6.setBackground(Color.decode("#2196f3"));
+		boton6.setForeground(Color.decode("#ffffff"));
+		boton6.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
 		add(boton6);
 
@@ -168,7 +201,7 @@ public class VentanaCalculadora extends JFrame {
 		etiqueta3.setBounds(60, 370, 220, 40);
 		// Añadimos a ventana
 		add(etiqueta3);
-		
+
 		// Inicialización de boton7 y características
 		// Inicialización
 		boton7 = new JButton("Reset");
@@ -188,4 +221,5 @@ public class VentanaCalculadora extends JFrame {
 		boton6.addActionListener(me);
 		boton7.addActionListener(me);
 	}
+
 }
