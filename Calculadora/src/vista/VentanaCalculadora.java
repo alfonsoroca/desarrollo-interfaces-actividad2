@@ -5,9 +5,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.text.AttributeSet.ColorAttribute;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import controlador.ManejadorEventos;
 
@@ -25,7 +25,7 @@ public class VentanaCalculadora extends JFrame {
 		// Título de la ventana
 		setTitle("Calculadora");
 		// Tamaño
-		setSize(340, 550);
+		setSize(340, 600);
 		// Bloqueamos tamaño
 		setResizable(false);
 		// Posición centrada
@@ -37,12 +37,17 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización de componentes
 		initComponentes();
 		// Color del fondo de la ventana
-		this.getContentPane().setBackground(Color.decode("#fafafa"));
+		this.getContentPane().setBackground(Color.decode("#263238"));
 		// Visibilidad
 		setVisible(true);
 	}
 
 	// Getters
+
+	public JLabel getEtiqueta2() {
+		return etiqueta2;
+	}
+
 	public JLabel getEtiqueta3() {
 		return etiqueta3;
 	}
@@ -90,7 +95,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		etiqueta1 = new JLabel("Número 1:");
 		// Posición y tamaño
-		etiqueta1.setBounds(60, 50, 70, 40);
+		etiqueta1.setBounds(40, 60, 80, 40);
+		// Estilo
+		etiqueta1.setForeground(Color.decode("#ffffff"));		
+		etiqueta1.setFont(new Font("Roboto", 1, 14));// Con 1 establecemos negrita
 		// Añadimos a ventana
 		add(etiqueta1);
 
@@ -98,7 +106,9 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		cajaTexto1 = new JTextField();
 		// Posición y tamaño
-		cajaTexto1.setBounds(180, 50, 100, 40);
+		cajaTexto1.setBounds(130, 60, 160, 40);
+		// Estilo de la caja de texto
+		cajaTexto1.setFont(new Font("Roboto", 1, 14));// Con 1 establecemos negrita
 		// Ponemos el foco en cajaTexto1
 		cajaTexto1.requestFocus();
 		// Añadimos a ventana
@@ -108,7 +118,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		etiqueta2 = new JLabel("Número 2:");
 		// Posición y tamaño
-		etiqueta2.setBounds(60, 100, 70, 40);
+		etiqueta2.setBounds(40, 110, 80, 40);
+		// Estilo
+		etiqueta2.setForeground(Color.decode("#ffffff"));
+		etiqueta2.setFont(new Font("Roboto", 1, 14));// Con 1 establecemos negrita
 		// Añadimos a ventana
 		add(etiqueta2);
 
@@ -116,7 +129,9 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		cajaTexto2 = new JTextField();
 		// Posición y tamaño
-		cajaTexto2.setBounds(180, 100, 100, 40);
+		cajaTexto2.setBounds(130, 110, 160, 40);
+		// Estilo de la caja de texto
+		cajaTexto2.setFont(new Font("Roboto", 1, 14));// Con 1 establecemos negrita
 		// Añadimos a ventana
 		add(cajaTexto2);
 
@@ -124,9 +139,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton1 = new JButton("Sumar");
 		// Posición y tamaño
-		boton1.setBounds(60, 160, 100, 50);
+		boton1.setBounds(60, 180, 100, 50);
 		// Estilo del boton
 		boton1.setBackground(Color.decode("#2196f3"));
+		boton1.setFont(new Font("Roboto", 1, 12));// Con 1 establecemos negrita
 		boton1.setForeground(Color.decode("#ffffff"));
 		boton1.setBorder(BorderFactory.createBevelBorder(0));
 
@@ -137,9 +153,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton2 = new JButton("Restar");
 		// Posición y tamaño
-		boton2.setBounds(180, 160, 100, 50);
+		boton2.setBounds(180, 180, 100, 50);
 		// Estilo del boton
 		boton2.setBackground(Color.decode("#2196f3"));
+		boton2.setFont(new Font("Roboto", 1, 12));// Con 1 establecemos negrita
 		boton2.setForeground(Color.decode("#ffffff"));
 		boton2.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
@@ -149,9 +166,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton3 = new JButton("Multiplicar");
 		// Posición y tamaño
-		boton3.setBounds(60, 230, 100, 50);
+		boton3.setBounds(60, 250, 100, 50);
 		// Estilo del boton
 		boton3.setBackground(Color.decode("#2196f3"));
+		boton3.setFont(new Font("Roboto", 1, 12));// Con 1 establecemos negrita
 		boton3.setForeground(Color.decode("#ffffff"));
 		boton3.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
@@ -161,9 +179,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton4 = new JButton("Dividir");
 		// Posición y tamaño
-		boton4.setBounds(180, 230, 100, 50);
+		boton4.setBounds(180, 250, 100, 50);
 		// Estilo del boton
 		boton4.setBackground(Color.decode("#2196f3"));
+		boton4.setFont(new Font("Roboto", 1, 12));// Con 1 establecemos negrita
 		boton4.setForeground(Color.decode("#ffffff"));
 		boton4.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
@@ -173,9 +192,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton5 = new JButton("Raíz 2");
 		// Posición y tamaño
-		boton5.setBounds(60, 300, 100, 50);
+		boton5.setBounds(60, 320, 100, 50);
 		// Estilo del boton
 		boton5.setBackground(Color.decode("#2196f3"));
+		boton5.setFont(new Font("Roboto", 1, 12));// Con 1 establecemos negrita
 		boton5.setForeground(Color.decode("#ffffff"));
 		boton5.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
@@ -185,9 +205,10 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton6 = new JButton("Raíz 3");
 		// Posición y tamaño
-		boton6.setBounds(180, 300, 100, 50);
+		boton6.setBounds(180, 320, 100, 50);
 		// Estilo del boton
 		boton6.setBackground(Color.decode("#2196f3"));
+		boton6.setFont(new Font("Roboto", 1, 12));// Con 1 establecemos negrita
 		boton6.setForeground(Color.decode("#ffffff"));
 		boton6.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
@@ -198,7 +219,13 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		etiqueta3 = new JLabel("Resultado:");
 		// Posición y tamaño
-		etiqueta3.setBounds(60, 370, 220, 40);
+		etiqueta3.setBounds(20, 390, 300, 40);
+		// Estilo de la etiqueta
+		etiqueta3.setFont(new Font("Roboto", 3, 20));// Con 3 establecemos negrita + cursiva
+		etiqueta3.setForeground(Color.decode("#ffffff"));
+		etiqueta3.setHorizontalAlignment(JLabel.CENTER);// Centramos el texto
+		// Ocultamos la etiqueta
+		etiqueta3.setVisible(false);
 		// Añadimos a ventana
 		add(etiqueta3);
 
@@ -206,7 +233,12 @@ public class VentanaCalculadora extends JFrame {
 		// Inicialización
 		boton7 = new JButton("Reset");
 		// Posición y tamaño
-		boton7.setBounds(120, 420, 100, 50);
+		boton7.setBounds(120, 460, 100, 50);
+		// Estilo del boton
+		boton7.setBackground(Color.decode("#ff6659"));
+		boton7.setFont(new Font("Roboto", 1, 16));// Con 1 establecemos negrita
+		boton7.setForeground(Color.decode("#ffffff"));
+		boton7.setBorder(BorderFactory.createBevelBorder(0));
 		// Añadimos a ventana
 		add(boton7);
 	}
@@ -221,5 +253,4 @@ public class VentanaCalculadora extends JFrame {
 		boton6.addActionListener(me);
 		boton7.addActionListener(me);
 	}
-
 }

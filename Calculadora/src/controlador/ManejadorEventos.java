@@ -32,13 +32,14 @@ public class ManejadorEventos implements ActionListener {
 				resetBotones();
 				// Cambiamos el estilo del boton
 				vc.getBoton1().setBackground(Color.decode("#ffb300"));
-				vc.getBoton1().setFont(new Font("Arial", Font.BOLD, 12));
+				vc.getBoton1().setFont(new Font("Roboto", 3, 12));// Con 3 establecemos negrita + cursiva
 				vc.getBoton1().setForeground(Color.black);
-				vc.getBoton1().setText("SUMADO");
-				vc.getBoton1().setBounds(55, 155, 110, 60);
+				vc.getBoton1().setText("Sumado");
+				vc.getBoton1().setBounds(55, 175, 110, 60);
 
 				Double suma = Double.parseDouble(vc.getCajaTexto1().getText())
 						+ Double.parseDouble(vc.getCajaTexto2().getText());
+				vc.getEtiqueta3().setVisible(true);
 				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(suma));
 			}
 
@@ -48,13 +49,14 @@ public class ManejadorEventos implements ActionListener {
 				resetBotones();
 				// Cambiamos el estilo del boton
 				vc.getBoton2().setBackground(Color.decode("#ffb300"));
-				vc.getBoton2().setFont(new Font("Arial", Font.BOLD, 12));
+				vc.getBoton2().setFont(new Font("Roboto", 3, 12));// Con 3 establecemos negrita + cursiva
 				vc.getBoton2().setForeground(Color.black);
-				vc.getBoton2().setText("RESTADO");
-				vc.getBoton2().setBounds(175, 155, 110, 60);
+				vc.getBoton2().setText("Restado");
+				vc.getBoton2().setBounds(175, 175, 110, 60);
 
 				double resta = Double.parseDouble(vc.getCajaTexto1().getText())
 						- Double.parseDouble(vc.getCajaTexto2().getText());
+				vc.getEtiqueta3().setVisible(true);
 				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(resta));
 			}
 
@@ -63,13 +65,14 @@ public class ManejadorEventos implements ActionListener {
 				resetBotones();
 				// Cambiamos el estilo del boton
 				vc.getBoton3().setBackground(Color.decode("#ffb300"));
-				vc.getBoton3().setFont(new Font("Arial", Font.BOLD, 12));
+				vc.getBoton3().setFont(new Font("Roboto", 3, 12));// Con 3 establecemos negrita + cursiva
 				vc.getBoton3().setForeground(Color.black);
-				vc.getBoton3().setText("MULTIPLICADO");
-				vc.getBoton3().setBounds(55, 225, 110, 60);
+				vc.getBoton3().setText("Multiplicado");
+				vc.getBoton3().setBounds(55, 245, 110, 60);
 
 				double multiplicacion = Double.parseDouble(vc.getCajaTexto1().getText())
 						* Double.parseDouble(vc.getCajaTexto2().getText());
+				vc.getEtiqueta3().setVisible(true);
 				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(multiplicacion));
 			}
 
@@ -79,13 +82,14 @@ public class ManejadorEventos implements ActionListener {
 				resetBotones();
 				// Cambiamos el estilo del boton
 				vc.getBoton4().setBackground(Color.decode("#ffb300"));
-				vc.getBoton4().setFont(new Font("Arial", Font.BOLD, 12));
+				vc.getBoton4().setFont(new Font("Roboto", 3, 12));// Con 3 establecemos negrita + cursiva
 				vc.getBoton4().setForeground(Color.black);
-				vc.getBoton4().setText("DIVIDIDO");
-				vc.getBoton4().setBounds(175, 225, 110, 60);
+				vc.getBoton4().setText("Dividido");
+				vc.getBoton4().setBounds(175, 245, 110, 60);
 
 				double division = Double.parseDouble(vc.getCajaTexto1().getText())
 						/ Double.parseDouble(vc.getCajaTexto2().getText());
+				vc.getEtiqueta3().setVisible(true);
 				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(division));
 			}
 
@@ -102,12 +106,24 @@ public class ManejadorEventos implements ActionListener {
 			// Si la contraseña es errónea se indica por ventana y se reinicia la
 			// calculadora.
 			if (e.getSource() == vc.getBoton6()) {
+				// Ocultamos etiqueta2 y cajaTexto2 y establecemos el valor de cajaTexto2 en ""
+				vc.getEtiqueta2().setVisible(false);
+				vc.getCajaTexto2().setVisible(false);
+				vc.getCajaTexto2().setText(null);
 				String password = "1234";
 				double raiz3 = Math.cbrt(Double.parseDouble(vc.getCajaTexto1().getText()));
 				String validacion = JOptionPane.showInputDialog("Contraseña:");
 
 				// Con el condicional controlamos la contraseña almacenada en password
 				if (validacion.equals(password)) {
+					resetBotones();
+					// Cambiamos el estilo del boton
+					vc.getBoton6().setBackground(Color.decode("#ffb300"));
+					vc.getBoton6().setFont(new Font("Roboto", 3, 12));// Con 3 establecemos negrita + cursiva
+					vc.getBoton6().setForeground(Color.black);
+					vc.getBoton6().setText("Raíz cúbica");
+					vc.getBoton6().setBounds(175, 315, 110, 60);
+					vc.getEtiqueta3().setVisible(true);
 					vc.getEtiqueta3().setText("Resultado: " + String.valueOf(raiz3));
 				} else {
 					JOptionPane.showMessageDialog(null, "Contraseña erronea", "Contraseña erronea",
@@ -126,6 +142,7 @@ public class ManejadorEventos implements ActionListener {
 			// e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Números no válidos, revisa los datos introducidos", "Datos erróneos",
 					JOptionPane.ERROR_MESSAGE);
+			reset();
 			vc.getCajaTexto1().requestFocus();
 		}
 	}
@@ -149,27 +166,43 @@ public class ManejadorEventos implements ActionListener {
 	private void resetBotones() {
 		// Reseteamos el boton1
 		vc.getBoton1().setText("Sumar");
-		vc.getBoton1().setBounds(60, 160, 100, 50);
+		vc.getBoton1().setBounds(60, 180, 100, 50);
 		vc.getBoton1().setBackground(Color.decode("#2196f3"));
+		vc.getBoton1().setFont(new Font("Roboto", 1, 12));
 		vc.getBoton1().setForeground(Color.decode("#ffffff"));
 		vc.getBoton1().setBorder(BorderFactory.createBevelBorder(0));
 		// Reseteamos el boton2
 		vc.getBoton2().setText("Restar");
-		vc.getBoton2().setBounds(180, 160, 100, 50);
+		vc.getBoton2().setBounds(180, 180, 100, 50);
 		vc.getBoton2().setBackground(Color.decode("#2196f3"));
+		vc.getBoton2().setFont(new Font("Roboto", 1, 12));
 		vc.getBoton2().setForeground(Color.decode("#ffffff"));
 		vc.getBoton2().setBorder(BorderFactory.createBevelBorder(0));
 		// Reseteamos el boton3
 		vc.getBoton3().setText("Multiplicar");
-		vc.getBoton3().setBounds(60, 230, 100, 50);
+		vc.getBoton3().setBounds(60, 250, 100, 50);
 		vc.getBoton3().setBackground(Color.decode("#2196f3"));
+		vc.getBoton3().setFont(new Font("Roboto", 1, 12));
 		vc.getBoton3().setForeground(Color.decode("#ffffff"));
 		vc.getBoton3().setBorder(BorderFactory.createBevelBorder(0));
 		// Reseteamos el boton4
 		vc.getBoton4().setText("Dividir");
-		vc.getBoton4().setBounds(180, 230, 100, 50);
+		vc.getBoton4().setBounds(180, 250, 100, 50);
 		vc.getBoton4().setBackground(Color.decode("#2196f3"));
+		vc.getBoton4().setFont(new Font("Roboto", 1, 12));
 		vc.getBoton4().setForeground(Color.decode("#ffffff"));
 		vc.getBoton4().setBorder(BorderFactory.createBevelBorder(0));
+		// Reseteamos el boton6
+		vc.getBoton6().setText("Raíz 3");
+		vc.getBoton6().setBounds(180, 320, 100, 50);
+		vc.getBoton6().setBackground(Color.decode("#2196f3"));
+		vc.getBoton6().setFont(new Font("Roboto", 1, 12));
+		vc.getBoton6().setForeground(Color.decode("#ffffff"));
+		vc.getBoton6().setBorder(BorderFactory.createBevelBorder(0));
+		// Mostramos etiqueta2 y cajaTexto2
+		vc.getEtiqueta2().setVisible(true);
+		vc.getCajaTexto2().setVisible(true);
+		// Ocultamos la etiqueta3
+		vc.getEtiqueta3().setVisible(false);
 	}
 }
