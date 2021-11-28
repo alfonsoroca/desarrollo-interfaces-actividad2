@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -13,7 +14,9 @@ import vista.VentanaCalculadora;
 // Clase que controla la funcionalidad de los botones e implementa la interfaz ActionListener
 public class ManejadorEventos implements ActionListener {
 
-	VentanaCalculadora vc;
+	
+	
+	private VentanaCalculadora vc;
 
 	// Constructor de ManejadorEventos con un parámetro de clase VentanaCalculadora
 	public ManejadorEventos(VentanaCalculadora vc) {
@@ -23,10 +26,15 @@ public class ManejadorEventos implements ActionListener {
 	// Sobrescritura del método actionPerformed
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		// Variable que almacena el resultado de la operación solicitada
+		double resultado = 0;
+
+		// Condicionales que determinan la funcionalidad de los botones
+
 		// Con un try-catch(Exception) controlamos las posibles excepciones de los
 		// métodos
 		try {
-			// Condicionales que determinan la funcionalidad de los botones
 			// Botón sumar
 			if (e.getSource() == vc.getBoton1()) {
 				resetBotones();
@@ -37,10 +45,9 @@ public class ManejadorEventos implements ActionListener {
 				vc.getBoton1().setText("Sumado");
 				vc.getBoton1().setBounds(55, 175, 110, 60);
 
-				Double suma = Double.parseDouble(vc.getCajaTexto1().getText())
+				resultado = Double.parseDouble(vc.getCajaTexto1().getText())
 						+ Double.parseDouble(vc.getCajaTexto2().getText());
-				vc.getEtiqueta3().setVisible(true);
-				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(suma));
+				imprimirResultado(resultado);
 			}
 
 			// Botón restar
@@ -54,10 +61,9 @@ public class ManejadorEventos implements ActionListener {
 				vc.getBoton2().setText("Restado");
 				vc.getBoton2().setBounds(175, 175, 110, 60);
 
-				double resta = Double.parseDouble(vc.getCajaTexto1().getText())
+				resultado = Double.parseDouble(vc.getCajaTexto1().getText())
 						- Double.parseDouble(vc.getCajaTexto2().getText());
-				vc.getEtiqueta3().setVisible(true);
-				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(resta));
+				imprimirResultado(resultado);
 			}
 
 			// Botón multiplicar
@@ -70,10 +76,9 @@ public class ManejadorEventos implements ActionListener {
 				vc.getBoton3().setText("Multiplicado");
 				vc.getBoton3().setBounds(55, 245, 110, 60);
 
-				double multiplicacion = Double.parseDouble(vc.getCajaTexto1().getText())
+				resultado = Double.parseDouble(vc.getCajaTexto1().getText())
 						* Double.parseDouble(vc.getCajaTexto2().getText());
-				vc.getEtiqueta3().setVisible(true);
-				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(multiplicacion));
+				imprimirResultado(resultado);
 			}
 
 			// Botón dividir
@@ -87,10 +92,9 @@ public class ManejadorEventos implements ActionListener {
 				vc.getBoton4().setText("Dividido");
 				vc.getBoton4().setBounds(175, 245, 110, 60);
 
-				double division = Double.parseDouble(vc.getCajaTexto1().getText())
+				resultado = Double.parseDouble(vc.getCajaTexto1().getText())
 						/ Double.parseDouble(vc.getCajaTexto2().getText());
-				vc.getEtiqueta3().setVisible(true);
-				vc.getEtiqueta3().setText("Resultado: " + String.valueOf(division));
+				imprimirResultado(resultado);
 			}
 
 			// Botón raíz cuadrada
@@ -111,7 +115,7 @@ public class ManejadorEventos implements ActionListener {
 				vc.getCajaTexto2().setVisible(false);
 				vc.getCajaTexto2().setText(null);
 				String password = "1234";
-				double raiz3 = Math.cbrt(Double.parseDouble(vc.getCajaTexto1().getText()));
+				resultado = Math.cbrt(Double.parseDouble(vc.getCajaTexto1().getText()));
 				String validacion = JOptionPane.showInputDialog("Contraseña:");
 
 				// Con el condicional controlamos la contraseña almacenada en password
@@ -123,11 +127,12 @@ public class ManejadorEventos implements ActionListener {
 					vc.getBoton6().setForeground(Color.black);
 					vc.getBoton6().setText("Raíz cúbica");
 					vc.getBoton6().setBounds(175, 315, 110, 60);
-					vc.getEtiqueta3().setVisible(true);
-					vc.getEtiqueta3().setText("Resultado: " + String.valueOf(raiz3));
+
+					imprimirResultado(resultado);
 				} else {
 					JOptionPane.showMessageDialog(null, "Contraseña erronea", "Contraseña erronea",
 							JOptionPane.WARNING_MESSAGE);
+					resultado = 0;
 					reset();
 				}
 			}
@@ -135,6 +140,7 @@ public class ManejadorEventos implements ActionListener {
 			// Botón reset
 			// Devuelve la calculadora a su situación inicial.
 			if (e.getSource() == vc.getBoton7()) {
+				resultado = 0;
 				reset();
 			}
 
@@ -142,14 +148,22 @@ public class ManejadorEventos implements ActionListener {
 			// e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Números no válidos, revisa los datos introducidos", "Datos erróneos",
 					JOptionPane.ERROR_MESSAGE);
+			resultado = 0;
 			reset();
 			vc.getCajaTexto1().requestFocus();
 		}
 	}
 
+	// Método que muestra el resultado de la operación realizada
+	private void imprimirResultado(double r) {
+		// Transformamos y mostramos el resultado en formato local
+		vc.getEtiqueta3().setVisible(true);
+		NumberFormat nf = NumberFormat.getInstance();		
+		vc.getEtiqueta3().setText("Resultado: " + String.valueOf(nf.format(r)));
+	}
+
 	// Método que resetea la calculadora a las condiciones del requerimiento
 	private void reset() {
-
 		// Vaciamos cajaTexto1
 		vc.getCajaTexto1().setText(null);
 		// Vaciamos cajaTexto2
